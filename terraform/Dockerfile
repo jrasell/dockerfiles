@@ -1,3 +1,15 @@
+# Comments:
+#   This is used for primary testing Terraform modules. The module must have a
+#   tests directory or equivalent which contains variables to be used during the
+#   test run.
+#
+#	docker run -v /<path_to_code>:/terraform-code \
+#		-e REGION=<aws_region> \
+#   -e AWS_ACCESS_KEY_ID=<aws_access_key_id> \
+#   -e AWS_SECRET_ACCESS_KEY=<aws_secret_access_key> \
+#   apply -var-file=/terraform-code/tests/variables.tf
+#
+
 FROM alpine:edge
 MAINTAINER James Rasell <jamesrasell@gmail.com>
 
