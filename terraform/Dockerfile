@@ -1,13 +1,16 @@
 # Comments:
-#   This is used for primary testing Terraform modules. The module must have a
-#   tests directory or equivalent which contains variables to be used during the
-#   test run.
+#	This is used for primary testing Terraform modules. The module must have a
+#	tests directory or equivalent which contains variables to be used during the
+#	test run, and also use remote state.
 #
-#	docker run -v /<path_to_code>:/terraform-code \
-#		-e REGION=<aws_region> \
-#   -e AWS_ACCESS_KEY_ID=<aws_access_key_id> \
-#   -e AWS_SECRET_ACCESS_KEY=<aws_secret_access_key> \
-#   apply -var-file=/terraform-code/tests/variables.tf
+# docker run --rm -it \
+#	-v /<path_to_code>:/terraform-code \
+# 	-e AWS_DEFAULT_REGION=<aws_region> \
+# 	-e AWS_ACCESS_KEY_ID=<aws_access_key_id> \
+# 	-e AWS_SECRET_ACCESS_KEY=<aws_secret_access_key> \
+#	/bin/sh -c "terraform remote config -backend=s3 -backend-config="<bucket_name>" \
+#	-backend-config="key=tfstate/modules/<module_name><version>.tfstate"; \
+#	terraform plan -var-file=/terraform-code/tests/variables.tf" /terraform-code
 #
 
 FROM alpine:edge
@@ -20,7 +23,7 @@ RUN	apk --no-cache add \
 	ca-certificates \
 	curl
 
-ENV TERRAFORM_VERSION v0.7.1
+ENV TERRAFORM_VERSION v0.7.2
 
 RUN buildDeps=' \
 		bash \
@@ -40,5 +43,3 @@ RUN buildDeps=' \
 	&& apk del $buildDeps \
 	&& rm -rf /go \
 	&& echo "Build complete."
-
-ENTRYPOINT [ "terraform" ]
