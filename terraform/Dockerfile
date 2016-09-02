@@ -10,7 +10,7 @@
 # 	-e AWS_SECRET_ACCESS_KEY=<aws_secret_access_key> \
 #	/bin/sh -c "terraform remote config -backend=s3 -backend-config="<bucket_name>" \
 #	-backend-config="key=tfstate/modules/<module_name><version>.tfstate"; \
-#	terraform plan -var-file=/terraform-code/tests/variables.tf" /terraform-code
+#	terraform plan -var-file=/terraform-code/tests/variables.tf /terraform-code"
 #
 
 FROM alpine:edge
