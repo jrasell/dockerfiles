@@ -13,7 +13,7 @@ RUN apk --no-cache add \
 	ca-certificates \
 	python \
 	py-pip \
-	&& pip install graffiti_monkey
+	&& pip install graffiti_monkey \
 	&& echo "Build complete."
 
 ENTRYPOINT [ "graffiti-monkey" ]
