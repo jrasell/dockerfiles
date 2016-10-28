@@ -14,5 +14,6 @@ RUN apk --no-cache add \
 	python \
 	py-pip \
 	&& pip install graffiti_monkey
+	&& echo "Build complete."
 
 ENTRYPOINT [ "graffiti-monkey" ]
