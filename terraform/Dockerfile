@@ -23,7 +23,7 @@ RUN	apk --no-cache add \
 	ca-certificates \
 	curl
 
-ENV TERRAFORM_VERSION v0.7.13
+ENV TERRAFORM_VERSION v0.8.0
 
 RUN buildDeps=' \
 		bash \
