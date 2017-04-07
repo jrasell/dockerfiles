@@ -11,7 +11,7 @@
 FROM alpine:edge
 MAINTAINER James Rasell <jamesrasell@gmail.com>
 
-ENV PACKER_VERSION 0.12.2
+ENV PACKER_VERSION 1.0.0
 
 RUN	apk --no-cache add \
 	ca-certificates
